@@ -13,7 +13,7 @@ import Grid from '@material-ui/core/Grid';
 const useStyles = makeStyles({
    
     media: {
-      height: 300,
+      width: '100%',
     },
     category:{
         fontSize: 16,
@@ -26,15 +26,15 @@ const useStyles = makeStyles({
 function Cards(props){
     const classes = useStyles();
     return(
-        <Grid item md={3} sm={4} xs={12}>
-        <Card>
-         <CardActionArea>
+        <Grid item md={3} sm={4} xs={12} className="d-flex flex-column">
+        <Card className="d-flex flex-column flex-grow-1">
+         <CardActionArea className="justify-content-center">
            <CardMedia
-             className={classes.media}
-             image={props.imgsrc}
              title={props.sname}
-           />
-           <CardContent>
+           >
+            <img src={props.imgsrc} className={classes.media} alt={props.sname}/>
+           </CardMedia>
+           <CardContent className="d-flex flex-column text-center">
              <Typography gutterBottom component="p" className={classes.category}>
              {props.sname}
              </Typography>
@@ -43,8 +43,8 @@ function Cards(props){
              </Typography>
            </CardContent>
          </CardActionArea>
-         <CardActions>
-         <Button variant="outlined">
+         <CardActions className="justify-content-center">
+         <Button variant="outlined" className="text-center">
             <Link href={props.link} color="inherit"  target="_blank">
                 Watch Now
             </Link>
